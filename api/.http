@@ -52,10 +52,10 @@ POST http://localhost:5001/api/posts/
 content-type: application/json
 
 {
-     "title": "New era in Rome",
+     "title": "efra New era in Rome",
     "desc": "dec",
-    "username": "fde",
-    "categories": "era"
+    "username": "jon",
+    "categories": "efra"
        }
  
 
@@ -80,4 +80,25 @@ content-type: application/json
            }
  
 ###
- GET http://localhost:5001/api/posts/6330a306b109de19ccbae6c5
+ GET http://localhost:5001/api/posts/?user=fde
+
+###
+ GET http://localhost:5001/api/posts/?cat=efra
+
+###
+POST http://localhost:5001/api/categories
+content-type: application/json
+
+{
+     "name": "fedri"
+     
+      }
+
+###
+GET http://localhost:5001/api/categories
+content-type: application/json
+
+
+###
+POST http://localhost:5001/api/upload
+Content-Type: image/png

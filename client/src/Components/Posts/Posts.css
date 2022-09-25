@@ -1,0 +1,12 @@
+ 
+.posts {
+    flex: 9;
+   display: grid;
+   justify-content: center;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(390px, 420px)
+  ); /* see notes below */
+  grid-gap: 10px;
+}

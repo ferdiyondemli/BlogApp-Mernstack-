@@ -1,0 +1,83 @@
+GET http://localhost:5001/api/users/6330a306b109de19ccbae6c5
+
+###
+POST http://localhost:5001/api/auth/register
+content-type: application/json
+
+{
+     "username": "fedrdnim",
+      "email": "ferdindrm@gmail.com",
+      "password": "123r5m"
+      }
+###
+
+###
+
+POST http://localhost:5001/api/auth/login
+content-type: application/json
+
+{
+     "username": "fedri",
+    
+      "password": "123r5"
+      }
+ 
+###
+
+PUT http://localhost:5001/api/users/63309b8d49600485bf8899af
+content-type: application/json
+
+{
+     "userId": "63309b8d49600485bf8899af",
+     "username":"altti",
+      "email": "alttti@gmail.com",
+      "password": "123r5m"
+      }
+
+###
+
+DELETE  http://localhost:5001/api/users/6330a2e254fb33c78459b138
+content-type: application/json
+
+{
+     "userId": "6330a2e254fb33c78459b138",
+     "username":"altti",
+      "email": "alttti@gmail.com",
+      "password": "123r5m"
+      }
+
+
+###
+POST http://localhost:5001/api/posts/
+content-type: application/json
+
+{
+     "title": "New era in Rome",
+    "desc": "dec",
+    "username": "fde",
+    "categories": "era"
+       }
+ 
+
+###
+PUT http://localhost:5001/api/posts/6330b0cd5c4881b1999c210
+content-type: application/json
+
+{
+    "username":"fde",
+     "title": "j v",
+    "desc": "dttttec",
+    "username": "fde",
+    "categories": "ttttera"
+       }
+ 
+###
+DELETE http://localhost:5001/api/posts/6330af93011deef7a39d737e
+content-type: application/json
+
+{
+    "username":"fde"
+           }
+ 
+###
+ GET http://localhost:5001/api/posts/6330a306b109de19ccbae6c5

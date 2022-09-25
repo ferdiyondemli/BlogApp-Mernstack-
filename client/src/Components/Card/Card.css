@@ -1,0 +1,15 @@
+.Card {
+   width: 385px;
+  margin: 30px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 25px;
+  height: max-content;
+  padding-bottom: 15px;
+  transition: 0.5s;
+}
+.Card:hover{
+   z-index: 999;
+  scale: 1.07;
+}

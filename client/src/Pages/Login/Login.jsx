@@ -21,9 +21,8 @@ export default function Login () {
       const { data } = await axios.post("api/auth/login", {
         email:userRef.current.value,
         password:passwordRef.current.value
-      });
-console.log(data)
-      dispatch({ type: "LOGIN_SUCCESS", payload: data });
+      }); 
+       dispatch({ type: "LOGIN_SUCCESS", payload: data });
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
 setErr(true)

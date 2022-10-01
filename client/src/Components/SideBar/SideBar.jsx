@@ -12,8 +12,8 @@ export default function SideBar() {
 const {user}=useContext(Context)
   useEffect(()=>{
     const fetch = async () => {
-      const fetchedPosts = await axios.get("api/categories");
-      console.log(fetchedPosts.data);
+      const fetchedPosts = await axios.get("/api/categories");
+      console.log(fetchedPosts);
        setCat(fetchedPosts.data);
     };
     fetch();

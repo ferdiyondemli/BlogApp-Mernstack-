@@ -31,7 +31,7 @@ export default function SinglePost({ post }) {
           desc: descRef.current.textContent,
         },
       });
-      window.location.replace(`/post/${post._id}`);
+      window.location.replace(`api/post/${post._id}`);
 
     } catch (error) {}
   };

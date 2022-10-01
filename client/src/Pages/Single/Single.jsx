@@ -10,9 +10,11 @@ export default function Single() {
   const [post, setPost] = useState([]);
  
 const id=window.location.href.split("/")[4]
+console.log(id)
  useEffect(()=>{
   const fetch = async () => {
-    const fetchedPosts = await axios.get(`/posts/${id}`);
+    const fetchedPosts = await axios.get(`/api/posts/${id}`);
+    console.log(fetchedPosts.data);
      setPost(fetchedPosts.data);
   };
   fetch();

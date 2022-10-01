@@ -7,6 +7,8 @@ const app = express();
 const router = require("./routes/Auth");
 const multer = require("multer");
 const cors = require('cors') 
+const path = require('path');
+
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
@@ -14,7 +16,7 @@ mongoose
   })
   .catch((err) => console.log("DB connection error : " + err));
 
-  app.use(cors({origin: "localhost:3000/api", credentials: true}))
+
 app.use(express.json({ strict: false }));
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth/", router);
@@ -22,6 +24,19 @@ app.use("/api/users/", require("./routes/User"));
 app.use("/api/posts/", require("./routes/Post"));
 app.use("/api/categories/", require("./routes/Category"));
  
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
+
 
 
 const storage = multer.diskStorage({

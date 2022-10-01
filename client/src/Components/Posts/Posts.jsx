@@ -2,16 +2,14 @@ import React from "react";
 import "./Posts.css";
 import Post from "../Post/Post";
 
-export default function Posts() {
+export default function Posts({all}) {
   return (
-       <div className="posts">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </div>
-   );
+    <div className="posts">
+      {all.map((post, i) => (
+        <Post key={i}  post={post} />
+      ))}
+
+    
+    </div>
+  );
 }

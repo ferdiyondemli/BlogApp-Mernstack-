@@ -1,8 +1,22 @@
 import React from "react";
 import "./SideBar.css";
 import Card from "../SideCard/Card";
-
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios"
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 export default function SideBar() {
+  const [cat, setCat]=useState([])
+const {user}=useContext(Context)
+  useEffect(()=>{
+    const fetch = async () => {
+      const fetchedPosts = await axios.get("/categories");
+       setCat(fetchedPosts.data);
+    };
+    fetch();
+  },[cat])
   return (
     <Card className="sideBar">
       <div className="sideBarItem">
@@ -12,19 +26,18 @@ export default function SideBar() {
           alt=""
         />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem reprehenderit voluptatibus debitis, velit doloremque
-          aperiam culpa commodi eaque. Voluptatum, cum. Voluptas reprehenderit
-           
+        {user&&user.aboutMe?<>{user.aboutMe}<Link to={"/settings"}><i className="singlePostIcon fa-solid fa-pen" ></i></Link></>
+        
+        
+        : (<Link to={"/settings"}>.... here is empty now. Could tell us about you more</Link> )}
+          
         </p>
       </div>
       <div className="sideBarItem">
         <span className="sideBarTitle">CATEORIES</span>
         <ul className="sideBarList">
-          <li className="sideBarListItem">army</li>
-          <li className="sideBarListItem">life</li>
-          <li className="sideBarListItem">food</li>
-          <li className="sideBarListItem">government</li>
+          {cat.map((one,i)=> <li key={i} className="sideBarListItem"><Link to={"/?cat="+one.name}>{one.name}</Link></li> )}
+          
         </ul>
       </div>
       <div className="sideBarItem">

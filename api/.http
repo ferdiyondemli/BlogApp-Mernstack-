@@ -1,4 +1,5 @@
-GET http://localhost:5001/api/users/6330a306b109de19ccbae6c5
+GET http://localhost:5001/all
+
 
 ###
 POST http://localhost:5001/api/auth/register
@@ -52,10 +53,10 @@ POST http://localhost:5001/api/posts/
 content-type: application/json
 
 {
-     "title": "efra New era in Rome",
-    "desc": "dec",
-    "username": "jon",
-    "categories": "efra"
+     "title": "rgrgerdr in london",
+    "desc": "lorem3",
+    "username": "ferdi",
+    "categories": "ferrferferf"
        }
  
 
@@ -90,7 +91,7 @@ POST http://localhost:5001/api/categories
 content-type: application/json
 
 {
-     "name": "fedri"
+     "name": "truck"
      
       }
 

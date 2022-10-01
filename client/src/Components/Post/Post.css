@@ -2,7 +2,10 @@
   width: 385px;
   margin: 0px 25px 40px 25px;
 }
+a{
+  text-decoration: none;
 
+}
 .postImg {
   width: 100%;
   height: 280px;
@@ -30,7 +33,8 @@
   font-size: 24px;
   font-weight: 700;
   margin-top: 10px;
-  cursor: pointer;
+  color: teal;
+  cursor: pointer ;
 }
 .postDate {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -53,3 +57,7 @@
   -webkit-box-orient: vertical;
   
 }
+ a{
+  cursor: pointer;
+
+ }

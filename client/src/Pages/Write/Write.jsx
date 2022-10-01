@@ -1,9 +1,34 @@
+import { useRef } from "react";
 import "./Write.css";
+import axios from "axios";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 export default function Write() {
   const src =
     "https://source.unsplash.com/random/250x2" +
     Math.floor(Math.random() * (98 - 11) + 11);
+
+  const titleRef = useRef();
+  const postRef = useRef();
+  const { user } = useContext(Context);
+  const submit = async (e) => {
+    e.preventDefault();
+    const post = {
+      title: titleRef.current.value,
+      desc: postRef.current.value,
+      username: user.username,
+      categories: "rome",
+    };
+    console.log(post);
+    try {
+      const { data } = await axios.post("/posts", post);
+      console.log(data);
+      window.location.replace(`/post/${data._id}`);
+    } catch (error) {
+      console.log("error:  " + error);
+    }
+  };
 
   return (
     <div className="write">
@@ -11,7 +36,7 @@ export default function Write() {
       <form className="writeForm">
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
-            <i class="writeFormIcon fa-solid fa-file-circle-plus"></i>
+            <i className="writeFormIcon fa-solid fa-file-circle-plus"></i>
           </label>
           <input type="file" id="fileInput" style={{ display: "none" }} />
           <input
@@ -19,6 +44,7 @@ export default function Write() {
             placeholder="Title"
             autoFocus={true}
             className="writeInput"
+            ref={titleRef}
           />
         </div>
         <div className="writeFormGroup">
@@ -29,9 +55,12 @@ export default function Write() {
             cols="30"
             rows="10"
             className="writeInput writeText"
+            ref={postRef}
           ></textarea>
         </div>
-        <button className="writeSubmit">Publich</button>
+        <button className="writeSubmit" onClick={submit}>
+          Publish
+        </button>
       </form>
     </div>
   );

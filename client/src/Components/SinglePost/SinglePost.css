@@ -23,16 +23,16 @@
   float: right;
   font-size: 16px;
 }
-.singlePostIcon {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
+ 
 .singlePostIcon:first-child {
   color: green;
+  cursor: pointer;
+
 }
 .singlePostIcon:last-child {
   color: red;
+  cursor: pointer;
+margin-left: 15px;
 }
 
 .singlePostInfo {

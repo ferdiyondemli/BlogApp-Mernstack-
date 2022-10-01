@@ -4,6 +4,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 router.post("/register", async (req, res) => {
+  const isExist = await User.findOne({  email: req.body.email });
+  if(isExist){
+   res.json({message:"User already exists"})
+}else{
   try {
     const saltRounds = 10;
     const salt = await bcrypt.genSaltSync(saltRounds);
@@ -13,21 +17,25 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       password: hashedpassword,
       profilPic: req.body.profilPic,
+      
     });
 
     const user = await newUser.save();
     const {password,...others}=user._doc
-    res.status(200).json(others);
-    res.status(200).json(user);
+     res.status(200).json(user);
   } catch (error) {
-    res.status(500);
+    res.status(500)
   }
-});
+}
+
+}
+
+);
 
 router.post("/login", async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
-    !user&&res.status(500).json("User not found")
+    const user = await User.findOne({ email: req.body.email });
+     !user&&res.status(500).json({message:"User not found"})
     const isPassword = bcrypt.compareSync(req.body.password, user.password);
 
     if (!isPassword) {
@@ -39,7 +47,6 @@ router.post("/login", async (req, res) => {
     res.status(500);
   }
 });
- 
 
 
 module.exports = router;

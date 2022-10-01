@@ -1,0 +1,11 @@
+ 
+  .about-section {
+    margin-top: 12px;
+    margin-left: 5px;
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+    flex: 9;
+  }
+   

@@ -6,19 +6,23 @@ const mongoose = require("mongoose");
 const app = express();
 const router = require("./routes/Auth");
 const multer = require("multer");
-
+const cors = require('cors') 
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("DB is connected");
   })
   .catch((err) => console.log("DB connection error : " + err));
+
+  app.use(cors({origin: "localhost:3000/api", credentials: true}))
 app.use(express.json({ strict: false }));
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth/", router);
 app.use("/api/users/", require("./routes/User"));
 app.use("/api/posts/", require("./routes/Post"));
 app.use("/api/categories/", require("./routes/Category"));
+ 
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

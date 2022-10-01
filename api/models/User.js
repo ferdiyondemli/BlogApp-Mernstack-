@@ -20,6 +20,11 @@ const Userschema = new mongoose.Schema({
     type: String,
    default:""
   },
+  aboutMe: {
+    type: String,
+    default:"I’ve seen how technology can connect people worldwide, and I’ve led the development of new products to grow that connection. In my next role, I want to work with customers on a global scale and demonstrate the worldwide usability of our company’s products.",
+    
+  },
 
 
 },{timestamps:true});

@@ -16,20 +16,6 @@ mongoose
   .catch((err) => console.log("DB connection error : " + err));
 
 
-// Serve frontend
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-
-  app.get('*', (req, res) =>
-    res.sendFile(
-      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
-    )
-  );
-} else {
-  app.get('/', (req, res) => res.send('Please set to production'));
-}
-
-
 app.use(express.json({ strict: false }));
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth/", router);
@@ -53,6 +39,21 @@ const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File uploaded");
 });
+
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'client', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
+
+
 
 app.listen(port, () => {
   console.log(`Server listenning on ${port}`);

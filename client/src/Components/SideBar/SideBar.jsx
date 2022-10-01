@@ -13,10 +13,11 @@ const {user}=useContext(Context)
   useEffect(()=>{
     const fetch = async () => {
       const fetchedPosts = await axios.get("/categories");
+      console.log(fetchedPosts.data);
        setCat(fetchedPosts.data);
     };
     fetch();
-  },[cat])
+  },[])
   return (
     <Card className="sideBar">
       <div className="sideBarItem">
@@ -36,7 +37,7 @@ const {user}=useContext(Context)
       <div className="sideBarItem">
         <span className="sideBarTitle">CATEORIES</span>
         <ul className="sideBarList">
-          {cat.map((one,i)=> <li key={i} className="sideBarListItem"><Link to={"/?cat="+one.name}>{one.name}</Link></li> )}
+          {cat&&cat.map((one,i)=> <li key={i} className="sideBarListItem"><Link to={"/?cat="+one.name}>{one.name}</Link></li> )}
           
         </ul>
       </div>

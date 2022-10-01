@@ -70,7 +70,7 @@ export default function SinglePost({ post }) {
         ) : (
           <h1 className="singlePostTitle">
             {post.title}
-            {user.username === post.username && (
+            {user&&user.username === post.username && (
               <div className="singlePostEdit" >
                 <i className="singlePostIcon fa-solid fa-pen"onClick={() => setMode(true)}></i>
                 <i

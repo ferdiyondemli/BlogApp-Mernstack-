@@ -20,7 +20,7 @@ export default function Post({
         <img src={photo ? photo : src} alt="profile" className="postImg" />
         <div className="postInfo">
           <div className="psdtCats">
-            {categories.map((one, i) => (
+            {categories&&categories.map((one, i) => (
               <span key={i} className="postCat">
                 {one}
               </span>

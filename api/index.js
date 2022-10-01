@@ -6,8 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 const router = require("./routes/Auth");
 const multer = require("multer");
-const cors = require('cors') 
-const path = require('path');
+ const path = require('path');
 
 mongoose
   .connect(process.env.MONGO_URL)

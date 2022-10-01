@@ -1,5 +1,5 @@
 .post {
-  width: 385px;
+  width: 100%;
   margin: 0px 25px 40px 25px;
 }
 a{
@@ -8,7 +8,7 @@ a{
 }
 .postImg {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
   border-radius: 7px;
 }

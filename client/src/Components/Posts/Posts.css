@@ -10,3 +10,19 @@
   ); /* see notes below */
   grid-gap: 10px;
 }
+
+
+@media only screen and (max-width: 690px) {
+  .posts {
+    
+   display: grid;
+   justify-content: center;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(150px, 250px)
+  ); /* see notes below */
+  grid-gap: 10px;
+}
+
+}

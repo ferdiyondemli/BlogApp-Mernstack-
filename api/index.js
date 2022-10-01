@@ -16,13 +16,6 @@ mongoose
   .catch((err) => console.log("DB connection error : " + err));
 
 
-app.use(express.json({ strict: false }));
-app.use(express.urlencoded({ extended: true }));
-app.use("/api/auth/", router);
-app.use("/api/users/", require("./routes/User"));
-app.use("/api/posts/", require("./routes/Post"));
-app.use("/api/categories/", require("./routes/Category"));
- 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -37,6 +30,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
+app.use(express.json({ strict: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use("/api/auth/", router);
+app.use("/api/users/", require("./routes/User"));
+app.use("/api/posts/", require("./routes/Post"));
+app.use("/api/categories/", require("./routes/Category"));
+ 
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

@@ -23,7 +23,7 @@ export default function Register() {
     setErr("");
 
     try {
-      const { data } = await axios.post("/auth/register", info);
+      const { data } = await axios.post("api/auth/register", info);
       // data.message ? setErr(data.message) : window.location.replace("/login");
       data.message? setErr(data.message) :setFirst(false)
 

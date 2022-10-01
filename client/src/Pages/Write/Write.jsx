@@ -22,7 +22,7 @@ export default function Write() {
     };
     console.log(post);
     try {
-      const { data } = await axios.post("/posts", post);
+      const { data } = await axios.post("api/posts", post);
       console.log(data);
       window.location.replace(`/post/${data._id}`);
     } catch (error) {

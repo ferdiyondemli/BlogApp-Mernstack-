@@ -24,7 +24,7 @@ export default function SinglePost({ post }) {
     try {
       const { data } = await axios({
         method: "put",
-        url: `/posts/${post._id}`,
+        url: `api/posts/${post._id}`,
         data: {
           username: user.username,
           title: titleRef.current.textContent,
@@ -40,7 +40,7 @@ export default function SinglePost({ post }) {
     try {
       await axios({
         method: "delete",
-        url: `/posts/${post._id}`,
+        url: `api/posts/${post._id}`,
         data: {
           username: user.username,
         },

@@ -19,7 +19,7 @@ export default function Settings() {
     try {
       const { data } = await axios({
         method: "put",
-        url: `/users/${user._id}`,
+        url: `api/users/${user._id}`,
         data: {
           userId: user._id,
           username: nameRef.current.value || user.username,

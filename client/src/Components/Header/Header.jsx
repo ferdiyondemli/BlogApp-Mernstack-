@@ -7,9 +7,8 @@ export default function Header() {
         <span className="headerTitleSm">
         Ancient Rome
         </span>
-        <span className="headerTitleLg">Blog</span>
-    </div>
-    <img className='headerImg' src="https://theromanguy.com/wp-content/uploads/Why-Was-the-Colosseum-Built-1440-x-675-900x420.jpg" alt="Header Image" />
+            </div>
+   
     </div>
   )
 }

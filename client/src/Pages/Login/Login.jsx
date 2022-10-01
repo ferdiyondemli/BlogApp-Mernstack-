@@ -1,36 +1,43 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
-  import { Context } from "../../context/Context";
-import {useState,useContext, useEffect, useRef } from "react";
- 
-export default function Login () {
-  const [isErr, setErr]=useState(false)
-  const userRef=useRef()
-  const passwordRef=useRef()
-  const {  dispatch, isFetching } = useContext(Context);
+import { Context } from "../../context/Context";
+import { useState, useContext, useEffect, useRef } from "react";
 
- 
+export default function Login() {
+  const [isErr, setErr] = useState(false);
+  const userRef = useRef();
+  const passwordRef = useRef();
+  const [password, setPassword] = useState("password");
+  const [email, setEmail] = useState("admin");
+  const { dispatch, isFetching } = useContext(Context);
+
   const submit = async (e) => {
     e.preventDefault();
 
     dispatch({ type: "LOGIN_START" });
-    setErr(false)
+    setErr(false);
 
     try {
       const { data } = await axios.post("api/auth/login", {
-        email:userRef.current.value,
-        password:passwordRef.current.value
-      }); 
-       dispatch({ type: "LOGIN_SUCCESS", payload: data });
+        email,
+        password,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
     } catch (error) {
       dispatch({ type: "LOGIN_FAILURE" });
-setErr(true)
+      setErr(true);
       console.log("error :" + error);
     }
   };
-
-   return (
+  const double = (e) => {
+    {
+      setErr(false);
+      setPassword(e.target.value);
+      setEmail(e.target.value);
+    }
+  };
+  return (
     <div className="login">
       <span className="loginTitle">Login</span>
       <form className="loginForm">
@@ -39,25 +46,40 @@ setErr(true)
           className="loginInput"
           type="text"
           placeholder="Enter your email"
-          ref={userRef}
-          onKeyDown={()=>setErr(false)}
+          onChange={(e) =>  {
+            setErr(false);
+             setEmail(e.target.value);
+          }}
+          value={email}
         />
         <label>Password</label>
         <input
           className="loginInput"
-          type="text"
+          type="password"
           placeholder="Enter your password"
-          ref={passwordRef}
-          onKeyDown={()=>setErr(false)}
-
+          onChange={(e) =>  {
+            setErr(false);
+            setPassword(e.target.value);
+           }}
+          value={password}
         />
         <button className="loginButton" onClick={submit} disabled={isFetching}>
           Login
         </button>
-        {isErr&&<p style={{color:"red", ["margin-top"]:"5px"}}> Something went wrong</p>}
+        {isErr && (
+          <p style={{ color: "red", ["margin-top"]: "5px" }}>
+            {" "}
+            Something went wrong
+          </p>
+        )}
       </form>
-      
-      <div className="bottomlink">If you need an account, please <Link className="Link loginRegsiterButton" to="/register">Register here </Link></div>
+
+      <div className="bottomlink">
+        If you need an account, please{" "}
+        <Link className="Link loginRegsiterButton" to="/register">
+          Register here{" "}
+        </Link>
+      </div>
     </div>
   );
 }

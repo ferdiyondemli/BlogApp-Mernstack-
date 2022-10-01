@@ -8,7 +8,6 @@ export default function Posts({all}) {
       {all.map((post, i) => (
         <Post key={i}  post={post} />
       ))}
-
     
     </div>
   );

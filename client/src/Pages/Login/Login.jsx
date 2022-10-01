@@ -56,9 +56,8 @@ setErr(true)
         </button>
         {isErr&&<p style={{color:"red", ["margin-top"]:"5px"}}> Something went wrong</p>}
       </form>
-      <Link className="Link" to="/register">
-        <button className="loginRegsiterButton">Register</button>
-      </Link>
+      
+      <div className="bottomlink">If you need an account, please <Link className="Link loginRegsiterButton" to="/register">Register here </Link></div>
     </div>
   );
 }

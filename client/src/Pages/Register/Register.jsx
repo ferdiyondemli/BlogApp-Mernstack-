@@ -67,9 +67,10 @@ if(!first){
           Register{" "}
         </button>
       </form>
-       <Link className="Link" to="/login">
-        <button className="registerLoginButton">Login</button>
-      </Link>
+       
+
+
+      <div className="bottomlink">If you have an account, please <Link className="Link registerLoginButton" to="/login">Login here </Link></div>
       {err ? (
         <p style={{ color: "red", marginTop: "10px" }}> {err}</p>
       ) : (<p> </p>)}

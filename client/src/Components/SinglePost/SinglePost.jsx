@@ -24,14 +24,14 @@ export default function SinglePost({ post }) {
     try {
       const { data } = await axios({
         method: "put",
-        url: `api/posts/${post._id}`,
+        url: `/api/posts/${post._id}`,
         data: {
           username: user.username,
           title: titleRef.current.textContent,
           desc: descRef.current.textContent,
         },
       });
-      window.location.replace(`api/post/${post._id}`);
+      window.location.replace(`/post/${post._id}`);
 
     } catch (error) {}
   };
@@ -40,7 +40,7 @@ export default function SinglePost({ post }) {
     try {
       await axios({
         method: "delete",
-        url: `api/posts/${post._id}`,
+        url: `/api/posts/${post._id}`,
         data: {
           username: user.username,
         },

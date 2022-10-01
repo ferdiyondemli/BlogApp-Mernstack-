@@ -44,14 +44,13 @@
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 .registerLoginButton{
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color:lightcoral;
     cursor: pointer;
-    padding: 10px;
-    border-radius: 10px;
+    margin-top: 20px;
+    background-color: teal;
     color: white;
     border: none;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+     background-color:lightcoral;
+     
 }

@@ -53,3 +53,16 @@
     margin-left: 15px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 690px) {
+  *{
+    font-size: 16px;
+  }
+  .toplist {
+    flex-direction: column;
+    
+  }
+  .top {
+     height: auto;
+  }
+}
